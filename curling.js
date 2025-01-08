@@ -83,11 +83,11 @@ function updateScreen(el, node, depth = 0, branchSum = 0) {
     newEl.classList.add("curl");
     let peelRotation = route * -20;
     if (branchSum > 0) {
-      peelRotation -= depth * 0.5;
+      peelRotation -= depth * 0.25;
     }
     newEl.style.setProperty(
       "transform",
-      `rotate(${peelRotation}deg) ${route ? "translateY(-2ch)" : ""}`
+      `rotate(${peelRotation}deg) translateY(-${route}ch)`
     );
     newEl.style.setProperty("font-size", `small`);
     newEl.title = peelRotation;
