@@ -9,6 +9,7 @@ class TrieNode {
 class Trie {
   constructor() {
     this.root = new TrieNode("");
+    this.mostRecent = this.root;
   }
 
   insert(word) {
@@ -21,6 +22,7 @@ class Trie {
       node = node.children[char];
     }
     node.isEndOfWord = true;
+    this.mostRecent = node;
   }
 
   search(word) {
@@ -72,19 +74,25 @@ input.addEventListener("keyup", (e) => {
   oldString = e.target.value;
 });
 
-function updateScreen(el, node, depth = 0) {
+function updateScreen(el, node, depth = 0, branchSum = 0) {
   console.log("'" + node.value + "'");
   el.textContent = node.value.replace(" ", "\u00A0");
   let route = Object.keys(node.children).length - 1;
   for (let [key, child] of Object.entries(node.children)) {
     let newEl = document.createElement("span");
     newEl.classList.add("curl");
+    let peelRotation = route * -20;
+    if (branchSum > 0) {
+      peelRotation -= depth * 0.5;
+    }
     newEl.style.setProperty(
       "transform",
-      `rotate(${-20 * route}deg) ${route ? "translateY(-2ch)" : ""}`
+      `rotate(${peelRotation}deg) ${route ? "translateY(-2ch)" : ""}`
     );
+    newEl.style.setProperty("font-size", `small`);
+    newEl.title = peelRotation;
     // newEl.style.setProperty("left", `${depth}ch`);
-    updateScreen(newEl, child, depth + 1);
+    updateScreen(newEl, child, depth + 1, branchSum + route);
 
     el.appendChild(newEl);
     route--;
