@@ -1,0 +1,70 @@
+<body>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <p>
+    hello thelloere
+    <span class="curl"
+      >hello
+      <span class="curl"
+        >hello thelloere ohello my
+        <span class="curl"
+          >hello
+          <span class="curl"
+            >hello<span class="curl">hello</span
+            ><span class="curl"
+              >hello<span class="curl"
+                >hello<span class="curl">hello</span></span
+              ></span
+            ></span
+          ></span
+        ></span
+      ></span
+    >
+  </p>
+  <div id="hotspot">
+    <textarea id="input" type="text" value="hello"></textarea>
+    <div id="curls"></div>
+  </div>
+  <pre id="debug"></pre>
+</body>
+<style>
+  :root {
+    --curve: -30deg;
+    font-family: monospace;
+  }
+  #hotspot {
+    background-color: tan;
+    min-width: 100%;
+    min-height: 15em;
+    display: flex;
+    align-items: start;
+    position: relative;
+  }
+  #curls {
+    position: absolute;
+    top: 50%;
+    /* left: 10rem; */
+  }
+  p {
+    margin: 0;
+  }
+  .curl {
+    display: inline-block;
+    position: absolute;
+    transform: rotate(var(--curve));
+    transform-origin: top left;
+  }
+</style>
+<script src="curling.js"></script>
